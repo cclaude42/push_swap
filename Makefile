@@ -6,7 +6,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 HEADER = push_swap.h
 
-SRC = push_swap.c parsing.c utils.c
+SRC = push_swap.c parsing.c basic_algorithm.c instructions.c \
+		list_utils.c list_utils2.c list_utils3.c
 
 OBJ = $(SRC:c=o)
 

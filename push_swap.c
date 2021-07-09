@@ -6,27 +6,42 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/08 18:32:14 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/09 17:50:13 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_list (node *lst)
+void print_instructions (node *instructions, char *moves, char *targets)
 {
-	node *current = lst->next;
-	printf("=== lst is : ===\n");
-	for (int i = 1 ; current != lst ; current = current->next)
-		printf("%d: %d\n", i++, current->data);
-	printf("================\n");
+	node	*nd;
+	char	res[5];
+	int		i;
+
+	nd = instructions->next;
+	while (nd != instructions)
+	{
+		// printf("num is %d\n", nd->data);
+		i = 0;
+		if (nd->data >= R2)
+			res[i++] = 'r';
+		res[i++] = moves[nd->data / 10 - 1];
+		res[i++] = targets[nd->data % 10 - 1];
+		res[i++] = '\n';
+		write(1, res, i);
+		nd = nd->next;
+	}
 }
 
 node *try_algorithm (node *stack, int algo)
 {
 	node	*instructions;
 
+	instructions = NULL;
+	// printf("Running algorithm %d\n", algo);
 	if (algo == BASIC)
 		instructions = basic_algorithm(stack);
+	// printf("Ran algorithm %d\n", algo);
 
 	return (instructions);
 }
@@ -64,7 +79,7 @@ int main (int ac, char **av)
 	if (!stack || get_stack(stack, ac - 1, av + 1))
 	{
 		sol = sort_stack(stack);
-		print_instructions(sol);
+		print_instructions(sol, "sprr", "absr");
 		free_list(sol);
 		free_list(stack);
 	}

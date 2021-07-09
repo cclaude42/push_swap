@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:01:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/08 18:17:46 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/09 15:10:20 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,9 @@ long get_val (char *str)
 	}
 	while (str[i])
 		n = n * 10 + str[i++] - '0';
-	if (n > 2147483647 || n < -2147483648)
+	if (n > INT_MAX || n < INT_MIN)
 		return (2147483648);
 	return (n * s);
-}
-
-int is_in (node *stack, int val)
-{
-	node	*current;
-
-	current = stack->next;
-	while (current != stack)
-	{
-		if (current->data == val)
-			return (1);
-		current = current->next;
-	}
-	return (0);
 }
 
 int get_stack (node *stack, int ac, char **av)
@@ -75,7 +61,7 @@ int get_stack (node *stack, int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		new_node = add_node(stack);
+		new_node = push_back(stack, 0);
 		if (new_node == NULL || is_num(av[i]) == 0 ||
 			get_val(av[i]) == 2147483648 || is_in(stack, get_val(av[i])) == 1)
 		{
