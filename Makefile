@@ -4,12 +4,15 @@ CC = clang
 
 CFLAGS = -Wall -Wextra -Werror
 
-HEADER = push_swap.h
+INCLUDES = includes
 
-SRC = push_swap.c parsing.c basic_algorithm.c instructions.c \
-		list_utils.c list_utils2.c list_utils3.c
+SRC = $(addprefix src/, \
+		push_swap.c parsing.c basic_algorithm.c instructions.c \
+		list_utils.c list_utils2.c list_utils3.c)
 
 OBJ = $(SRC:c=o)
+
+NAMEB = checker
 
 SRCB =
 
@@ -19,12 +22,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\033[0;32m\n\nCompiling push_swap..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -o $(NAME) $(OBJ)
 	@echo "\n\033[0mDone !"
 
 %.o: %.c
-	@printf "\033[0;33mGenerating push_swap objects... %-10.10s\r" $@
-	@${CC} ${CFLAGS} -c $< -o $@
+	@printf "\033[0;33mGenerating push_swap objects... %-20.20s\r" $@
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
 	@echo "\033[0;31m\nDeleting objects..."
@@ -33,16 +36,16 @@ clean:
 
 fclean:
 	@echo "\033[0;31m\nDeleting objects..."
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(OBJB)
 	@echo "\nDeleting executable..."
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAMEB)
 	@echo "\033[0m"
 
 re: fclean all
 
-$(NAME)_bonus: $(OBJB)
-	@echo "\033[0;32m\n\nCompiling push_swap (with bonuses)..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJB)
+bonus: $(OBJB)
+	@echo "\033[0;32m\n\nCompiling checker..."
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -o $(NAMEB) $(OBJB)
 	@echo "\n\033[0mDone !"
 
 .PHONY: clean fclean re bonus
