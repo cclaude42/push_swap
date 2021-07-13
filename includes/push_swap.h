@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/12 19:10:10 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/13 20:04:22 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # include <limits.h>
 
 # define BASIC 1
-# define BUCKET 2
 
-# define NB_ALGORITHMS 2
+# define NB_ALGORITHMS 15
 
 # define SA  11
 # define SB  12
@@ -55,7 +54,7 @@ typedef struct			s_node
 int get_stack (node *stack, int ac, char **av);
 
 node *basic_algorithm (node *astack);
-node *bucket_algorithm (node *astack);
+node *bucket_algorithm (node *astack, int n);
 
 void do_instruction (int op, node *astack, node *bstack, node *instructions);
 
@@ -76,6 +75,8 @@ int get_value_at (node *lst, int index);
 int get_value_around (node *lst, int mode, int value);
 int get_max (node *lst);
 int get_min (node *lst);
+
+node *sorted_list (node *lst);
 
 void print_list (node *lst);
 

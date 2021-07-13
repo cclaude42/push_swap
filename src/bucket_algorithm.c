@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 17:21:09 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/12 19:08:33 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:58:31 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 node *get_bucket_limits (node *stack, int n)
 {
+	node	*sorted;
 	node	*limits;
 	int		len;
 	int		i;
 	int		val;
 
+	sorted = sorted_list(stack);
 	limits = init_list();
-	len = len_list(stack);
+	len = len_list(sorted);
 	i = 1;
 	while (i <= n)
 	{
-		val = get_value_at(stack, i * len / n - 1);
+		val = get_value_at(sorted, i * len / n - 1);
 		push_back(limits, val);
 		i++;
 	}
+	free_list(sorted);
 	return (limits);
 }
 
@@ -52,9 +55,10 @@ void prepare_insertion (int insert, node *stack, node *instructions)
 
 	if (len_list(stack) < 2)
 		return ;
-	target = get_max(stack);
-	if (insert < get_max(stack))
-		target = get_value_around(stack, ABOVE, insert);
+	if (insert > get_min(stack) && insert < get_max(stack))
+		target = get_value_around(stack, UNDER, insert);
+	else
+		target = get_max(stack);
 	rotation = R;
 	if (get_index_of(stack, target) > len_list(stack) / 2)
 		rotation = R2;
@@ -79,7 +83,7 @@ void sort_bucket (int limit, node *astack, node *bstack, node *instructions)
 	}
 }
 
-node *bucket_algorithm (node *astack)
+node *bucket_algorithm (node *astack, int n)
 {
 	node	*instructions;
 	node	*bstack;
@@ -87,7 +91,7 @@ node *bucket_algorithm (node *astack)
 
 	instructions = init_list();
 	bstack = init_list();
-	limits = get_bucket_limits(astack, 11);
+	limits = get_bucket_limits(astack, n);
 	while (!is_empty(limits))
 	{
 		sort_bucket(limits->next->data, astack, bstack, instructions);

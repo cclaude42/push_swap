@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/12 19:09:54 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:58:42 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ node *try_algorithm (node *stack, int algo)
 	node	*instructions;
 
 	instructions = NULL;
-	// printf("Running algorithm %d\n", algo);
 	if (algo == BASIC)
 		instructions = basic_algorithm(stack);
-	else if (algo == BUCKET)
-		instructions = bucket_algorithm(stack);
-	// printf("Ran algorithm %d\n", algo);
+	else
+		instructions = bucket_algorithm(stack, algo);
 
 	return (instructions);
 }
@@ -53,6 +51,7 @@ node *sort_stack (node *stack)
 	node	*copy;
 	node	*instructions;
 	node	*best;
+	int		bestie = 1;
 	int		algo;
 
 	algo = 1;
@@ -65,11 +64,13 @@ node *sort_stack (node *stack)
 		{
 			free_list(best);
 			best = instructions;
+			bestie = algo - 1;
 		}
 		else
 			free_list(instructions);
 	}
-	return (instructions);
+	fprintf(stderr, "Best algorithm is %d\n", bestie);
+	return (best);
 }
 
 int main (int ac, char **av)

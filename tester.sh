@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+	os=macos
+else
+	os=linux
+fi
+
 make re
 
 for testsize in $(ls tests)
@@ -12,7 +19,7 @@ do
 	for test in $(cat tests/$testsize)
 	do
 		IFS=$' '
-		if ./push_swap ${test[@]} | ./checker_linux ${test[@]} | grep -q "OK"
+		if ./push_swap ${test[@]} | ./checker_$os ${test[@]} | grep -q "OK"
 		then
 			n=$(./push_swap ${test[@]} | wc -l)
 			total=$((total+n))
