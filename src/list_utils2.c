@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 14:39:33 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/09 14:55:42 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/12 17:52:11 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ int is_sorted (node *lst)
 	return (0);
 }
 
+int is_rsorted (node *lst)
+{
+	node	*nd;
+
+	nd = lst->next;
+	while (nd != lst && nd->next != lst && nd->data > nd->next->data)
+		nd = nd->next;
+	if (nd->next == lst)
+		return (1);
+	return (0);
+}
+
 int is_in (node *lst, int val)
 {
 	node	*nd;
@@ -45,34 +57,19 @@ int is_in (node *lst, int val)
 	return (0);
 }
 
-int get_max (node *lst)
+int len_list (node *lst)
 {
-	node	*nd;
-	int		max;
+	node	*current;
+	int		i;
 
-	nd = lst->next;
-	max = INT_MIN;
-	while (nd != lst)
+	if (lst == NULL)
+		return (-1);
+	current = lst->next;
+	i = 0;
+	while (current != lst)
 	{
-		if (nd->data > max)
-			max = nd->data;
-		nd = nd->next;
+		current = current->next;
+		i++;
 	}
-	return (max);
-}
-
-int get_min (node *lst)
-{
-	node	*nd;
-	int		min;
-
-	nd = lst->next;
-	min = INT_MAX;
-	while (nd != lst)
-	{
-		if (nd->data < min)
-			min = nd->data;
-		nd = nd->next;
-	}
-	return (min);
+	return (i);
 }

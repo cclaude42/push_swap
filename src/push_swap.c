@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/10 17:17:52 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/12 19:09:54 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ node *try_algorithm (node *stack, int algo)
 	// printf("Running algorithm %d\n", algo);
 	if (algo == BASIC)
 		instructions = basic_algorithm(stack);
+	else if (algo == BUCKET)
+		instructions = bucket_algorithm(stack);
 	// printf("Ran algorithm %d\n", algo);
 
 	return (instructions);

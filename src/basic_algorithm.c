@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 14:37:18 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/09 17:34:23 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/12 18:55:32 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 void get_to_top (int a_or_b, int val, node *stack, node *instructions)
 {
 	int	n;
-	int	op;
+	int	rotation;
 
-	n = get_index(stack, val);
-	op = R;
+	n = get_index_of(stack, val);
+	rotation = R;
 	// printf("Finding n\n");
-	if (get_index(stack, val) > len_list(stack) / 2)
+	if (n > len_list(stack) / 2)
 	{
-		n = len_list(stack) - get_index(stack, val);
-		op = R2;
+		n = len_list(stack) - n;
+		rotation = R2;
 	}
 	// printf("Running %d times\n", n);
 	while (n-- > 0)
 	{
 		if (a_or_b == A)
-			do_instruction(op + a_or_b, stack, NULL, instructions);
+			do_instruction(rotation + a_or_b, stack, NULL, instructions);
 		else
-			do_instruction(op + a_or_b, NULL, stack, instructions);
+			do_instruction(rotation + a_or_b, NULL, stack, instructions);
 		// printf("%d to go\n", n);
 	}
 }

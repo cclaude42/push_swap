@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 16:16:57 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/09 17:17:55 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/12 17:51:20 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ node *push_back (node *lst, int val)
 	return (new_node);
 }
 
+void pop_node (node *nd)
+{
+	node	*prev;
+	node	*next;
+
+	if (nd == NULL)
+		return ;
+	prev = nd->prev;
+	next = nd->next;
+	prev->next = next;
+	next->prev = prev;
+	free(nd);
+}
+
 void free_list (node *lst)
 {
 	node	*current;
@@ -78,21 +92,4 @@ void free_list (node *lst)
 		next = next->next;
 	}
 	free(lst);
-}
-
-int len_list (node *lst)
-{
-	node	*current;
-	int		i;
-
-	if (lst == NULL)
-		return (-1);
-	current = lst->next;
-	i = 0;
-	while (current != lst)
-	{
-		current = current->next;
-		i++;
-	}
-	return (i);
 }
