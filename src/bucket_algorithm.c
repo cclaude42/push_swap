@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 17:21:09 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/13 19:58:31 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/14 15:46:15 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,12 @@ void sort_bucket (int limit, node *astack, node *bstack, node *instructions)
 		if (astack->next->data <= limit)
 		{
 			prepare_insertion(astack->next->data, bstack, instructions);
+			condense_instructions(instructions, R);
+			condense_instructions(instructions, R2);
 			do_instruction(PB, astack, bstack, instructions);
 		}
-		do_instruction(rotation + A, astack, bstack, instructions);
+		else
+			do_instruction(rotation + A, astack, bstack, instructions);
 	}
 }
 

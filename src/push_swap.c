@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/13 19:58:42 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/14 14:19:16 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ node *sort_stack (node *stack)
 	node	*copy;
 	node	*instructions;
 	node	*best;
-	int		bestie = 1;
 	int		algo;
 
 	algo = 1;
@@ -64,12 +63,10 @@ node *sort_stack (node *stack)
 		{
 			free_list(best);
 			best = instructions;
-			bestie = algo - 1;
 		}
 		else
 			free_list(instructions);
 	}
-	fprintf(stderr, "Best algorithm is %d\n", bestie);
 	return (best);
 }
 

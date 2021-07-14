@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = includes
 
 SRC = $(addprefix src/, \
-		push_swap.c parsing.c instructions.c \
+		push_swap.c parsing.c instructions.c instructions2.c \
 		basic_algorithm.c bucket_algorithm.c \
 		list_utils.c list_utils2.c list_utils3.c list_utils4.c)
 

@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/13 20:04:22 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/14 15:29:43 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define R2  40
 # define A   1
 # define B   2
+# define XS  3
+# define XR  4
 
 # define UNDER 0
 # define ABOVE 1
@@ -57,6 +59,8 @@ node *basic_algorithm (node *astack);
 node *bucket_algorithm (node *astack, int n);
 
 void do_instruction (int op, node *astack, node *bstack, node *instructions);
+
+void condense_instructions (node *instructions, int target);
 
 node *init_list (void);
 node *dup_list (node *lst);
@@ -77,6 +81,8 @@ int get_max (node *lst);
 int get_min (node *lst);
 
 node *sorted_list (node *lst);
+int count_list (node *lst, int value);
+int count_from_list (node *lst, node *start, int value);
 
 void print_list (node *lst);
 
