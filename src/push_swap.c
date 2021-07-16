@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 14:19:16 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 01:10:12 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void print_instructions (node *instructions, char *moves, char *targets)
 	nd = instructions->next;
 	while (nd != instructions)
 	{
-		// printf("num is %d\n", nd->data);
 		i = 0;
 		if (nd->data >= R2)
 			res[i++] = 'r';
@@ -40,8 +39,10 @@ node *try_algorithm (node *stack, int algo)
 	instructions = NULL;
 	if (algo == BASIC)
 		instructions = basic_algorithm(stack);
-	else
+	else if (algo > BASIC && algo < INSERT)
 		instructions = bucket_algorithm(stack, algo);
+	else if (algo == INSERT)
+		instructions = insert_algorithm(stack);
 
 	return (instructions);
 }
@@ -53,7 +54,7 @@ node *sort_stack (node *stack)
 	node	*best;
 	int		algo;
 
-	algo = 1;
+	algo = 16;
 	best = NULL;
 	while (algo <= NB_ALGORITHMS)
 	{

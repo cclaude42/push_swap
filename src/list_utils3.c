@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:26:10 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 15:01:02 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/16 23:53:47 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int get_min (node *lst)
 void print_list (node *lst)
 {
 	node *current = lst->next;
-	printf("=== lst is : ===\n");
+	fprintf(stderr, "=== lst is : ===\n");
 	for (int i = 1 ; current != lst ; current = current->next)
-		printf("%d: %d\n", i++, current->data);
-	printf("================\n");
+		fprintf(stderr, "%d: %d\n", i++, current->data);
+	fprintf(stderr, "================\n");
 }

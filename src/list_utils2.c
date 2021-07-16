@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 14:39:33 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/12 17:52:11 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:45:19 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,5 @@ int is_in (node *lst, int val)
 
 int len_list (node *lst)
 {
-	node	*current;
-	int		i;
-
-	if (lst == NULL)
-		return (-1);
-	current = lst->next;
-	i = 0;
-	while (current != lst)
-	{
-		current = current->next;
-		i++;
-	}
-	return (i);
+	return (lst->data);
 }

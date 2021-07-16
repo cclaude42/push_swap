@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 15:29:43 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:54:49 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <limits.h>
 
 # define BASIC 1
+# define INSERT 16
 
-# define NB_ALGORITHMS 15
+# define NB_ALGORITHMS 16
 
 # define SA  11
 # define SB  12
@@ -57,15 +58,16 @@ int get_stack (node *stack, int ac, char **av);
 
 node *basic_algorithm (node *astack);
 node *bucket_algorithm (node *astack, int n);
+node *insert_algorithm (node *astack);
 
 void do_instruction (int op, node *astack, node *bstack, node *instructions);
 
-void condense_instructions (node *instructions, int target);
+void condense_instructions (node *instructions);
 
 node *init_list (void);
 node *dup_list (node *lst);
 node *push_back (node *lst, int val);
-void pop_node (node *nd);
+void pop_node (node *lst, node *nd);
 void free_list (node *lst);
 
 int is_empty (node *lst);
@@ -81,9 +83,12 @@ int get_max (node *lst);
 int get_min (node *lst);
 
 node *sorted_list (node *lst);
-int count_list (node *lst, int value);
-int count_from_list (node *lst, node *start, int value);
+int list_count (node *lst, int value);
+int list_count_from (node *lst, node *start, int value);
+int list_dist_to (node *lst, int val, int *rot);
+int list_rot_to (node *lst, int val, int pos_rot, int neg_rot);
 
+int abs (int n);
 void print_list (node *lst);
 
 # endif

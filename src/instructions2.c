@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 14:39:11 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 15:47:28 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:20:06 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void condense_instructions (node *instructions, int target)
+void ab_to_x (node *instructions, int target)
 {
 	node	*nd;
 	int		acount;
@@ -21,8 +21,8 @@ void condense_instructions (node *instructions, int target)
 	nd = instructions->prev;
 	while (nd != instructions && nd->data / 10 * 10 != P)
 		nd = nd->prev;
-	acount = count_from_list(instructions, nd, target + A);
-	bcount = count_from_list(instructions, nd, target + B);
+	acount = list_count_from(instructions, nd, target + A);
+	bcount = list_count_from(instructions, nd, target + B);
 	if (acount > bcount)
 		acount = bcount;
 	else
@@ -34,8 +34,15 @@ void condense_instructions (node *instructions, int target)
 		else if (nd->data == target + B && bcount-- > 0 )
 		{
 			nd = nd->prev;
-			pop_node(nd->next);
+			pop_node(instructions, nd->next);
 		}
 		nd = nd->next;
 	}
+}
+
+
+void condense_instructions (node *instructions)
+{
+	ab_to_x(instructions, R);
+	ab_to_x(instructions, R2);
 }

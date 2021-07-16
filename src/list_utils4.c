@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 17:16:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 15:18:46 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:10:29 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ node *sorted_list (node *lst)
 	return (sorted);
 }
 
-int count_list (node *lst, int value)
+int list_count (node *lst, int value)
 {
 	node	*nd;
 	int		count;
@@ -44,7 +44,7 @@ int count_list (node *lst, int value)
 	return (count);
 }
 
-int count_from_list (node *lst, node *start, int value)
+int list_count_from (node *lst, node *start, int value)
 {
 	node	*nd;
 	int		count;
@@ -59,3 +59,26 @@ int count_from_list (node *lst, node *start, int value)
 	}
 	return (count);
 }
+
+int list_dist_to (node *lst, int val, int *rot)
+{
+	int	n;
+
+	n = get_index_of(lst, val);
+	if (n > len_list(lst) / 2)
+	{
+		*rot = R2;
+		n = len_list(lst) - n;
+	}
+	else
+		*rot = R;
+	return (n);
+}
+
+// int list_rot_to (node *lst, int val, int pos_rot, int neg_rot)
+// {
+// 	if (get_index_of(lst, val) > len_list(lst) / 2)
+// 		return (neg_rot);
+// 	else
+// 		return (pos_rot);
+// }

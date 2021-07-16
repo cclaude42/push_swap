@@ -6,11 +6,19 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:01:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/09 15:10:20 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:54:45 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int abs (int n)
+{
+	if (n >= 0)
+		return (n);
+	else
+		return (-n);
+}
 
 int is_num (char *str)
 {
@@ -61,14 +69,14 @@ int get_stack (node *stack, int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		new_node = push_back(stack, 0);
+		new_node = push_back(stack, get_val(av[i]));
 		if (new_node == NULL || is_num(av[i]) == 0 ||
-			get_val(av[i]) == 2147483648 || is_in(stack, get_val(av[i])) == 1)
+		get_val(av[i]) == 2147483648 || list_count(stack, get_val(av[i])) > 1)
 		{
 			free_list(stack);
 			return (0);
 		}
-		new_node->data = get_val(av[i++]);
+		i++;
 	}
 	return (1);
 }

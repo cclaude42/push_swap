@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   instructions1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/13 18:30:22 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:30:49 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void push (node *from, node *to)
 		pushed->prev = to;
 		pushed->next = top_t;
 	}
+	from->data--;
+	to->data++;
 }
 
 void swap (node *stack)

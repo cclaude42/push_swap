@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   list_utils1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 16:16:57 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/12 17:51:20 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:44:05 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ node *init_list (void)
 	nil_node = malloc(sizeof(node));
 	if (nil_node)
 	{
+		nil_node->data = 0;
 		nil_node->next = nil_node;
 		nil_node->prev = nil_node;
 	}
@@ -59,10 +60,11 @@ node *push_back (node *lst, int val)
 		lst->prev->next = new_node;
 		lst->prev = new_node;
 	}
+	lst->data++;
 	return (new_node);
 }
 
-void pop_node (node *nd)
+void pop_node (node *lst, node *nd)
 {
 	node	*prev;
 	node	*next;
@@ -74,6 +76,7 @@ void pop_node (node *nd)
 	prev->next = next;
 	next->prev = prev;
 	free(nd);
+	lst->data--;
 }
 
 void free_list (node *lst)

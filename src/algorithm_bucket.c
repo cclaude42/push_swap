@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bucket_algorithm.c                                 :+:      :+:    :+:   */
+/*   algorithm_bucket.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 17:21:09 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 15:46:15 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:19:50 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void sort_bucket (int limit, node *astack, node *bstack, node *instructions)
 		if (astack->next->data <= limit)
 		{
 			prepare_insertion(astack->next->data, bstack, instructions);
-			condense_instructions(instructions, R);
-			condense_instructions(instructions, R2);
+			condense_instructions(instructions);
 			do_instruction(PB, astack, bstack, instructions);
 		}
 		else
@@ -98,7 +97,7 @@ node *bucket_algorithm (node *astack, int n)
 	while (!is_empty(limits))
 	{
 		sort_bucket(limits->next->data, astack, bstack, instructions);
-		pop_node(limits->next);
+		pop_node(limits, limits->next);
 	}
 	while (bstack->next->data != get_max(bstack))
 	{

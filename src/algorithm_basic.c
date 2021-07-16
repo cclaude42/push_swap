@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_algorithm.c                                  :+:      :+:    :+:   */
+/*   algorithm_basic.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 14:37:18 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/14 14:18:59 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 00:10:10 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@ void get_to_top (int a_or_b, int val, node *stack, node *instructions)
 	int	n;
 	int	rotation;
 
-	n = get_index_of(stack, val);
-	rotation = R;
-	if (n > len_list(stack) / 2)
-	{
-		n = len_list(stack) - n;
-		rotation = R2;
-	}
+	n = list_dist_to(stack, val, &rotation);
 	while (n-- > 0)
 	{
 		if (a_or_b == A)
