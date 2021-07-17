@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:26:10 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/16 23:53:47 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 02:08:12 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_index_of (node *lst, int val)
+int list_index_of (node *lst, int val)
 {
 	node	*nd;
 	int		i;
@@ -27,7 +27,7 @@ int get_index_of (node *lst, int val)
 	return (i);
 }
 
-int get_value_at (node *lst, int index)
+int list_value_at (node *lst, int index)
 {
 	node	*nd;
 	int		i;
@@ -42,7 +42,7 @@ int get_value_at (node *lst, int index)
 	return (nd->data);
 }
 
-int get_value_around (node *lst, int mode, int value)
+int list_value_around (node *lst, int mode, int value)
 {
 	node	*nd;
 	int		under;
@@ -65,7 +65,7 @@ int get_value_around (node *lst, int mode, int value)
 		return (under);
 }
 
-int get_max (node *lst)
+int list_max (node *lst)
 {
 	node	*nd;
 	int		max;
@@ -81,7 +81,7 @@ int get_max (node *lst)
 	return (max);
 }
 
-int get_min (node *lst)
+int list_min (node *lst)
 {
 	node	*nd;
 	int		min;
@@ -95,13 +95,4 @@ int get_min (node *lst)
 		nd = nd->next;
 	}
 	return (min);
-}
-
-void print_list (node *lst)
-{
-	node *current = lst->next;
-	fprintf(stderr, "=== lst is : ===\n");
-	for (int i = 1 ; current != lst ; current = current->next)
-		fprintf(stderr, "%d: %d\n", i++, current->data);
-	fprintf(stderr, "================\n");
 }

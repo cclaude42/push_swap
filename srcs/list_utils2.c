@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 14:39:33 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 00:45:19 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 01:20:36 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int is_in (node *lst, int val)
 	return (0);
 }
 
-int len_list (node *lst)
+int list_len (node *lst)
 {
 	return (lst->data);
 }

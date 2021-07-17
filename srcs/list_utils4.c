@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 17:16:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 00:10:29 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 01:21:31 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ node *sorted_list (node *lst)
 	int		val;
 
 	sorted = init_list();
-	val = get_min(lst);
+	val = list_min(lst);
 	push_back(sorted, val);
-	while (len_list(sorted) < len_list(lst))
+	while (list_len(sorted) < list_len(lst))
 	{
-		val = get_value_around(lst, ABOVE, val);
+		val = list_value_around(lst, ABOVE, val);
 		push_back(sorted, val);
 	}
 	return (sorted);
@@ -64,21 +64,13 @@ int list_dist_to (node *lst, int val, int *rot)
 {
 	int	n;
 
-	n = get_index_of(lst, val);
-	if (n > len_list(lst) / 2)
+	n = list_index_of(lst, val);
+	if (n > list_len(lst) / 2)
 	{
 		*rot = R2;
-		n = len_list(lst) - n;
+		n = list_len(lst) - n;
 	}
 	else
 		*rot = R;
 	return (n);
 }
-
-// int list_rot_to (node *lst, int val, int pos_rot, int neg_rot)
-// {
-// 	if (get_index_of(lst, val) > len_list(lst) / 2)
-// 		return (neg_rot);
-// 	else
-// 		return (pos_rot);
-// }

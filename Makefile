@@ -6,9 +6,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = includes
 
-SRC = $(addprefix src/, \
-		push_swap.c parsing.c instructions1.c instructions2.c \
-		algorithm_basic.c algorithm_bucket.c algorithm_insert.c \
+SRC = $(addprefix srcs/, \
+		push_swap.c parsing.c instructions.c algorithm.c \
 		list_utils1.c list_utils2.c list_utils3.c list_utils4.c)
 
 OBJ = $(SRC:c=o)

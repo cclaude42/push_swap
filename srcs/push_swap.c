@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 01:10:12 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 01:29:50 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,43 +32,32 @@ void print_instructions (node *instructions, char *moves, char *targets)
 	}
 }
 
-node *try_algorithm (node *stack, int algo)
+void condense_instructions (node *instructions, int target)
 {
-	node	*instructions;
+	node	*nd;
+	int		acount;
+	int		bcount;
 
-	instructions = NULL;
-	if (algo == BASIC)
-		instructions = basic_algorithm(stack);
-	else if (algo > BASIC && algo < INSERT)
-		instructions = bucket_algorithm(stack, algo);
-	else if (algo == INSERT)
-		instructions = insert_algorithm(stack);
-
-	return (instructions);
-}
-
-node *sort_stack (node *stack)
-{
-	node	*copy;
-	node	*instructions;
-	node	*best;
-	int		algo;
-
-	algo = 16;
-	best = NULL;
-	while (algo <= NB_ALGORITHMS)
+	nd = instructions->prev;
+	while (nd != instructions && nd->data / 10 * 10 != P)
+		nd = nd->prev;
+	acount = list_count_from(instructions, nd, target + A);
+	bcount = list_count_from(instructions, nd, target + B);
+	if (acount > bcount)
+		acount = bcount;
+	else
+		bcount = acount;
+	while (nd != instructions)
 	{
-		copy = dup_list(stack);
-		instructions = try_algorithm(copy, algo++);
-		if (best == NULL || len_list(best) > len_list(instructions))
+		if (nd->data == target + A && acount-- > 0)
+			nd->data = target + XR;
+		else if (nd->data == target + B && bcount-- > 0 )
 		{
-			free_list(best);
-			best = instructions;
+			nd = nd->prev;
+			pop_node(instructions, nd->next);
 		}
-		else
-			free_list(instructions);
+		nd = nd->next;
 	}
-	return (best);
 }
 
 int main (int ac, char **av)
@@ -79,7 +68,7 @@ int main (int ac, char **av)
 	stack = init_list();
 	if (!stack || get_stack(stack, ac - 1, av + 1))
 	{
-		sol = sort_stack(stack);
+		sol = insert_algorithm(stack);
 		print_instructions(sol, "sprr", "absr");
 		free_list(sol);
 		free_list(stack);

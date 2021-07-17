@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions1.c                                    :+:      :+:    :+:   */
+/*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 00:30:49 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 01:33:25 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ void rrotate (node *stack)
 
 void do_instruction (int op, node *astack, node *bstack, node *instructions)
 {
+	if (op == PA || op == PB)
+	{
+		condense_instructions(instructions, R);
+		condense_instructions(instructions, R2);
+	}
 	push_back(instructions, op);
 	if (op == PA)
 		push(bstack, astack);
