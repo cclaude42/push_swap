@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 01:33:25 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 14:15:18 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,28 +94,30 @@ void rrotate (node *stack)
 	}
 }
 
-void do_instruction (int op, node *astack, node *bstack, node *instructions)
+void condense_instructions (node *instructions, int target)
 {
-	if (op == PA || op == PB)
+	node	*nd;
+	int		acount;
+	int		bcount;
+
+	nd = instructions->prev;
+	while (nd != instructions && nd->data / 10 * 10 != P)
+		nd = nd->prev;
+	acount = list_count_from(instructions, nd, target + A);
+	bcount = list_count_from(instructions, nd, target + B);
+	if (acount > bcount)
+		acount = bcount;
+	else
+		bcount = acount;
+	while (nd != instructions)
 	{
-		condense_instructions(instructions, R);
-		condense_instructions(instructions, R2);
+		if (nd->data == target + A && acount-- > 0)
+			nd->data = target + XR;
+		else if (nd->data == target + B && bcount-- > 0 )
+		{
+			nd = nd->prev;
+			pop_node(instructions, nd->next);
+		}
+		nd = nd->next;
 	}
-	push_back(instructions, op);
-	if (op == PA)
-		push(bstack, astack);
-	if (op == PB)
-		push(astack, bstack);
-	if (op == SA || op == SS)
-		swap(astack);
-	if (op == SB || op == SS)
-		swap(bstack);
-	if (op == RA || op == RR)
-		rotate(astack);
-	if (op == RB || op == RR)
-		rotate(bstack);
-	if (op == RRA || op == RRR)
-		rrotate(astack);
-	if (op == RRB || op == RRR)
-		rrotate(bstack);
 }

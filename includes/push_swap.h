@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 02:08:06 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 14:16:52 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ node *insert_algorithm (node *astack);
 
 void do_instruction (int op, node *astack, node *bstack, node *instructions);
 
+void push (node *from, node *to);
+void swap (node *stack);
+void rotate (node *stack);
+void rrotate (node *stack);
 void condense_instructions (node *instructions, int rotation);
 
 node *init_list (void);

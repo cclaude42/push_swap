@@ -1,16 +1,24 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "darwin"* ]]
-then
-	os=macos
-else
-	os=linux
-fi
-
 b=$(tput setaf 5)$(tput bold)
 r=$(tput sgr0)
 
 make re
+
+
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+	os=_macos
+else
+	os=_linux
+fi
+
+if [[ $1 == "-mine" ]]
+then
+	make bonus
+	os=""
+fi
+
 
 for testsize in $(ls tests)
 do
@@ -23,7 +31,7 @@ do
 	for test in $(cat tests/$testsize)
 	do
 		IFS=$' '
-		if ./push_swap ${test[@]} | checkers/checker_$os ${test[@]} | grep -q "OK"
+		if ./push_swap ${test[@]} | checkers/checker$os ${test[@]} | grep -q "OK"
 		then
 			n=$(./push_swap ${test[@]} | wc -l)
 			if ((n > max))

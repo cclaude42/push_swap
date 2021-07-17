@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 01:29:50 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/17 14:30:12 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,30 @@ void print_instructions (node *instructions, char *moves, char *targets)
 	}
 }
 
-void condense_instructions (node *instructions, int target)
+void do_instruction (int op, node *astack, node *bstack, node *instructions)
 {
-	node	*nd;
-	int		acount;
-	int		bcount;
-
-	nd = instructions->prev;
-	while (nd != instructions && nd->data / 10 * 10 != P)
-		nd = nd->prev;
-	acount = list_count_from(instructions, nd, target + A);
-	bcount = list_count_from(instructions, nd, target + B);
-	if (acount > bcount)
-		acount = bcount;
-	else
-		bcount = acount;
-	while (nd != instructions)
+	if (op == PA || op == PB)
 	{
-		if (nd->data == target + A && acount-- > 0)
-			nd->data = target + XR;
-		else if (nd->data == target + B && bcount-- > 0 )
-		{
-			nd = nd->prev;
-			pop_node(instructions, nd->next);
-		}
-		nd = nd->next;
+		condense_instructions(instructions, R);
+		condense_instructions(instructions, R2);
 	}
+	push_back(instructions, op);
+	if (op == PA)
+		push(bstack, astack);
+	if (op == PB)
+		push(astack, bstack);
+	if (op == SA || op == SS)
+		swap(astack);
+	if (op == SB || op == SS)
+		swap(bstack);
+	if (op == RA || op == RR)
+		rotate(astack);
+	if (op == RB || op == RR)
+		rotate(bstack);
+	if (op == RRA || op == RRR)
+		rrotate(astack);
+	if (op == RRB || op == RRR)
+		rrotate(bstack);
 }
 
 int main (int ac, char **av)
@@ -66,7 +64,7 @@ int main (int ac, char **av)
 	node	*sol;
 
 	stack = init_list();
-	if (!stack || get_stack(stack, ac - 1, av + 1))
+	if (stack && get_stack(stack, ac - 1, av + 1))
 	{
 		sol = insert_algorithm(stack);
 		print_instructions(sol, "sprr", "absr");

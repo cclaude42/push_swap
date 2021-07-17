@@ -1,3 +1,7 @@
+###################################
+# Main : stack sorting program
+###################################
+
 NAME = push_swap
 
 CC = clang
@@ -12,11 +16,21 @@ SRC = $(addprefix srcs/, \
 
 OBJ = $(SRC:c=o)
 
+###################################
+# Bonus : checker program
+###################################
+
 NAMEB = checker
 
-SRCB =
+SRCB = $(addprefix srcs/, \
+		checker.c parsing.c instructions.c algorithm.c \
+		list_utils1.c list_utils2.c list_utils3.c list_utils4.c)
 
 OBJB = $(SRCB:c=o)
+
+###################################
+#
+###################################
 
 all: $(NAME)
 
@@ -38,14 +52,14 @@ fclean:
 	@echo "\033[0;31m\nDeleting objects..."
 	@rm -f $(OBJ) $(OBJB)
 	@echo "\nDeleting executable..."
-	@rm -f $(NAME) $(NAMEB)
+	@rm -f $(NAME) checkers/$(NAMEB)
 	@echo "\033[0m"
 
 re: fclean all
 
 bonus: $(OBJB)
 	@echo "\033[0;32m\n\nCompiling checker..."
-	@$(CC) $(CFLAGS) -I $(INCLUDES) -o $(NAMEB) $(OBJB)
+	@$(CC) $(CFLAGS) -I $(INCLUDES) -o checkers/$(NAMEB) $(OBJB)
 	@echo "\n\033[0mDone !"
 
 .PHONY: clean fclean re bonus
