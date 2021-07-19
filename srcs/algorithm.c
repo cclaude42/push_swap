@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 21:03:15 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 01:32:51 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 12:56:51 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ node *insert_algorithm (node *astack)
 		else
 			do_instruction(RA, astack, bstack, instructions);
 	}
+	free_list(bstack);
 	return (instructions);
 }
