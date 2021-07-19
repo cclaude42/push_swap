@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 21:03:15 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 12:56:51 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int test_target (node *astack, node *bstack, int atarget, int btarget)
+int	test_target (t_node *astack, t_node *bstack, int atarget, int btarget)
 {
 	int	adist;
 	int	bdist;
@@ -31,7 +31,7 @@ int test_target (node *astack, node *bstack, int atarget, int btarget)
 	return (adist + bdist);
 }
 
-int find_best_target (node *astack, node *bstack)
+int	find_best_target (t_node *astack, t_node *bstack)
 {
 	int	best_target;
 	int	best_nmoves;
@@ -46,7 +46,7 @@ int find_best_target (node *astack, node *bstack)
 	{
 		target = list_value_at(bstack, (bstack->data + i) % bstack->data);
 		nmoves = test_target(astack, bstack,
-			list_value_around(astack, ABOVE, target), target);
+				list_value_around(astack, ABOVE, target), target);
 		if (nmoves < best_nmoves)
 		{
 			best_target = target;
@@ -59,7 +59,7 @@ int find_best_target (node *astack, node *bstack)
 	return (best_target);
 }
 
-void refill_astack (node *astack, node *bstack, node *instructions)
+void	refill_astack (t_node *astack, t_node *bstack, t_node *instructions)
 {
 	int	target;
 	int	n;
@@ -79,9 +79,9 @@ void refill_astack (node *astack, node *bstack, node *instructions)
 	}
 }
 
-void fill_bstack (node *astack, node *bstack, node *instructions)
+void	fill_bstack (t_node *astack, t_node *bstack, t_node *instructions)
 {
-	node	*nd;
+	t_node	*nd;
 	int		median;
 
 	nd = sorted_list(astack);
@@ -101,10 +101,10 @@ void fill_bstack (node *astack, node *bstack, node *instructions)
 	}
 }
 
-node *insert_algorithm (node *astack)
+t_node	*insert_algorithm (t_node *astack)
 {
-	node	*instructions;
-	node	*bstack;
+	t_node	*instructions;
+	t_node	*bstack;
 
 	instructions = init_list();
 	bstack = init_list();

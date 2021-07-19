@@ -6,17 +6,17 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 14:15:18 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push (node *from, node *to)
+void	push (t_node *from, t_node *to)
 {
-	node	*pushed;
-	node	*top_f;
-	node	*top_t;
+	t_node	*pushed;
+	t_node	*top_f;
+	t_node	*top_t;
 
 	pushed = from->next;
 	top_f = pushed->next;
@@ -34,11 +34,11 @@ void push (node *from, node *to)
 	to->data++;
 }
 
-void swap (node *stack)
+void	swap (t_node *stack)
 {
-	node	*first;
-	node	*second;
-	node	*third;
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
 
 	first = stack->next;
 	second = first->next;
@@ -54,11 +54,11 @@ void swap (node *stack)
 	}
 }
 
-void rotate (node *stack)
+void	rotate (t_node *stack)
 {
-	node	*first;
-	node	*second;
-	node	*last;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
 	first = stack->next;
 	second = first->next;
@@ -74,11 +74,11 @@ void rotate (node *stack)
 	}
 }
 
-void rrotate (node *stack)
+void	rrotate (t_node *stack)
 {
-	node	*first;
-	node	*last;
-	node	*sec_last;
+	t_node	*first;
+	t_node	*last;
+	t_node	*sec_last;
 
 	first = stack->next;
 	last = stack->prev;
@@ -94,9 +94,9 @@ void rrotate (node *stack)
 	}
 }
 
-void condense_instructions (node *instructions, int target)
+void	condense_instructions (t_node *instructions, int target)
 {
-	node	*nd;
+	t_node	*nd;
 	int		acount;
 	int		bcount;
 
@@ -116,7 +116,7 @@ void condense_instructions (node *instructions, int target)
 		else if (nd->data == target + B && bcount-- > 0 )
 		{
 			nd = nd->prev;
-			pop_node(instructions, nd->next);
+			pop_t_node(instructions, nd->next);
 		}
 		nd = nd->next;
 	}

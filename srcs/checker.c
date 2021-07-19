@@ -6,15 +6,15 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 12:49:56 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 15:02:43 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:57:18 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void do_instruction (int op, node *astack, node *bstack, node *instructions)
+void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
 {
-	(void)instructions;
+	(void)ins;
 	if (op == PA)
 		push(bstack, astack);
 	if (op == PB)
@@ -33,9 +33,9 @@ void do_instruction (int op, node *astack, node *bstack, node *instructions)
 		rrotate(bstack);
 }
 
-int solve (node *astack, node *bstack, node *instructions)
+int	solve (t_node *astack, t_node *bstack, t_node *instructions)
 {
-	node	*nd;
+	t_node	*nd;
 
 	nd = instructions->next;
 	while (nd != instructions)
@@ -49,7 +49,7 @@ int solve (node *astack, node *bstack, node *instructions)
 		return (0);
 }
 
-int add_instruction (node *instructions, char ins[5])
+int	add_instruction (t_node *instructions, char ins[5])
 {
 	if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'a' && ins[3] == '\n')
 		push_back(instructions, RRA);
@@ -78,7 +78,7 @@ int add_instruction (node *instructions, char ins[5])
 	return (1);
 }
 
-int get_instructions (node *instructions)
+int	get_instructions (t_node *instructions)
 {
 	char	ins[5];
 	char	buf[1];
@@ -103,11 +103,11 @@ int get_instructions (node *instructions)
 	return (ret);
 }
 
-int main (int ac, char **av)
+int	main (int ac, char **av)
 {
-	node	*astack;
-	node	*bstack;
-	node	*instructions;
+	t_node	*astack;
+	t_node	*bstack;
+	t_node	*instructions;
 
 	astack = init_list();
 	bstack = init_list();

@@ -6,15 +6,15 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 15:26:10 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 02:08:12 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int list_index_of (node *lst, int val)
+int	list_index_of (t_node *lst, int val)
 {
-	node	*nd;
+	t_node	*nd;
 	int		i;
 
 	nd = lst->next;
@@ -27,9 +27,9 @@ int list_index_of (node *lst, int val)
 	return (i);
 }
 
-int list_value_at (node *lst, int index)
+int	list_value_at (t_node *lst, int index)
 {
-	node	*nd;
+	t_node	*nd;
 	int		i;
 
 	nd = lst->next;
@@ -42,9 +42,9 @@ int list_value_at (node *lst, int index)
 	return (nd->data);
 }
 
-int list_value_around (node *lst, int mode, int value)
+int	list_value_around (t_node *lst, int mode, int value)
 {
-	node	*nd;
+	t_node	*nd;
 	int		under;
 	int		above;
 
@@ -65,9 +65,9 @@ int list_value_around (node *lst, int mode, int value)
 		return (under);
 }
 
-int list_max (node *lst)
+int	list_max (t_node *lst)
 {
-	node	*nd;
+	t_node	*nd;
 	int		max;
 
 	nd = lst->next;
@@ -81,9 +81,9 @@ int list_max (node *lst)
 	return (max);
 }
 
-int list_min (node *lst)
+int	list_min (t_node *lst)
 {
-	node	*nd;
+	t_node	*nd;
 	int		min;
 
 	nd = lst->next;

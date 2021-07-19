@@ -6,15 +6,15 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 17:16:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 01:21:31 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-node *sorted_list (node *lst)
+t_node	*sorted_list (t_node *lst)
 {
-	node	*sorted;
+	t_node	*sorted;
 	int		val;
 
 	sorted = init_list();
@@ -28,9 +28,9 @@ node *sorted_list (node *lst)
 	return (sorted);
 }
 
-int list_count (node *lst, int value)
+int	list_count (t_node *lst, int value)
 {
-	node	*nd;
+	t_node	*nd;
 	int		count;
 
 	nd = lst->next;
@@ -44,9 +44,9 @@ int list_count (node *lst, int value)
 	return (count);
 }
 
-int list_count_from (node *lst, node *start, int value)
+int	list_count_from (t_node *lst, t_node *start, int value)
 {
-	node	*nd;
+	t_node	*nd;
 	int		count;
 
 	nd = start;
@@ -60,7 +60,7 @@ int list_count_from (node *lst, node *start, int value)
 	return (count);
 }
 
-int list_dist_to (node *lst, int val, int *rot)
+int	list_dist_to (t_node *lst, int val, int *rot)
 {
 	int	n;
 

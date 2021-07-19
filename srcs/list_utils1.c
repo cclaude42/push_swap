@@ -6,17 +6,17 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 16:16:57 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 00:44:05 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:56:26 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-node *init_list (void)
+t_node	*init_list (void)
 {
-	node	*nil_node;
+	t_node	*nil_node;
 
-	nil_node = malloc(sizeof(node));
+	nil_node = malloc(sizeof(t_node));
 	if (nil_node)
 	{
 		nil_node->data = 0;
@@ -26,11 +26,11 @@ node *init_list (void)
 	return (nil_node);
 }
 
-node *dup_list (node *lst)
+t_node	*dup_list (t_node *lst)
 {
-	node	*current;
-	node	*new_lst;
-	node	*new_node;
+	t_node	*current;
+	t_node	*new_lst;
+	t_node	*new_node;
 
 	current = lst->next;
 	new_lst = init_list();
@@ -47,11 +47,11 @@ node *dup_list (node *lst)
 	return (new_lst);
 }
 
-node *push_back (node *lst, int val)
+t_node	*push_back (t_node *lst, int val)
 {
-	node	*new_node;
+	t_node	*new_node;
 
-	new_node = malloc(sizeof(node));
+	new_node = malloc(sizeof(t_node));
 	if (new_node)
 	{
 		new_node->data = val;
@@ -64,10 +64,10 @@ node *push_back (node *lst, int val)
 	return (new_node);
 }
 
-void pop_node (node *lst, node *nd)
+void	pop_t_node (t_node *lst, t_node *nd)
 {
-	node	*prev;
-	node	*next;
+	t_node	*prev;
+	t_node	*next;
 
 	if (nd == NULL)
 		return ;
@@ -79,10 +79,10 @@ void pop_node (node *lst, node *nd)
 	lst->data--;
 }
 
-void free_list (node *lst)
+void	free_list (t_node *lst)
 {
-	node	*current;
-	node	*next;
+	t_node	*current;
+	t_node	*next;
 
 	if (lst == NULL)
 		return ;

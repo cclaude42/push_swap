@@ -6,15 +6,15 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/17 14:30:12 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 14:57:35 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_instructions (node *instructions, char *moves, char *targets)
+void	print_instructions (t_node *instructions, char *moves, char *targets)
 {
-	node	*nd;
+	t_node	*nd;
 	char	res[5];
 	int		i;
 
@@ -32,14 +32,14 @@ void print_instructions (node *instructions, char *moves, char *targets)
 	}
 }
 
-void do_instruction (int op, node *astack, node *bstack, node *instructions)
+void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
 {
 	if (op == PA || op == PB)
 	{
-		condense_instructions(instructions, R);
-		condense_instructions(instructions, R2);
+		condense_instructions(ins, R);
+		condense_instructions(ins, R2);
 	}
-	push_back(instructions, op);
+	push_back(ins, op);
 	if (op == PA)
 		push(bstack, astack);
 	if (op == PB)
@@ -58,10 +58,10 @@ void do_instruction (int op, node *astack, node *bstack, node *instructions)
 		rrotate(bstack);
 }
 
-int main (int ac, char **av)
+int	main (int ac, char **av)
 {
-	node	*stack;
-	node	*sol;
+	t_node	*stack;
+	t_node	*sol;
 
 	stack = init_list();
 	if (stack && get_stack(stack, ac - 1, av + 1))
