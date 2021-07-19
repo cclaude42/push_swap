@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:55:24 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 16:05:13 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	condense_instructions (t_node *instructions, int rotation);
 t_node	*init_list (void);
 t_node	*dup_list (t_node *lst);
 t_node	*push_back (t_node *lst, int val);
-void	pop_t_node (t_node *lst, t_node *nd);
+void	pop_node (t_node *lst, t_node *nd);
 void	free_list (t_node *lst);
 
 int		is_empty (t_node *lst);

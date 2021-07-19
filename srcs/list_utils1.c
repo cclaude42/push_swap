@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 16:16:57 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:56:26 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 16:04:13 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_node	*push_back (t_node *lst, int val)
 	return (new_node);
 }
 
-void	pop_t_node (t_node *lst, t_node *nd)
+void	pop_node (t_node *lst, t_node *nd)
 {
 	t_node	*prev;
 	t_node	*next;

@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/07/19 16:04:42 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	condense_instructions (t_node *instructions, int target)
 		else if (nd->data == target + B && bcount-- > 0 )
 		{
 			nd = nd->prev;
-			pop_t_node(instructions, nd->next);
+			pop_node(instructions, nd->next);
 		}
 		nd = nd->next;
 	}
