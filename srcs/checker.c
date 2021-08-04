@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 12:49:56 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:57:18 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/08/04 23:07:01 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	main (int ac, char **av)
 		free_list(bstack);
 		free_list(instructions);
 	}
-	else if (ac > 2)
+	else if (ac != 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);

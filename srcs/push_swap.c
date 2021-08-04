@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:57:35 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/08/04 23:00:37 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ int	main (int ac, char **av)
 	t_node	*sol;
 
 	stack = init_list();
-	if (stack && get_stack(stack, ac - 1, av + 1))
+	if (ac == 1)
+		return (0);
+	else if (stack && get_stack(stack, ac - 1, av + 1))
 	{
+		if (is_sorted(stack))
+			return (0);
 		sol = insert_algorithm(stack);
 		print_instructions(sol, "sprr", "absr");
 		free_list(sol);
