@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 16:16:57 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 16:04:13 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:00:48 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*init_list (void)
+t_node	*init_list(void)
 {
 	t_node	*nil_node;
 
@@ -26,7 +26,7 @@ t_node	*init_list (void)
 	return (nil_node);
 }
 
-t_node	*dup_list (t_node *lst)
+t_node	*dup_list(t_node *lst)
 {
 	t_node	*current;
 	t_node	*new_lst;
@@ -47,7 +47,7 @@ t_node	*dup_list (t_node *lst)
 	return (new_lst);
 }
 
-t_node	*push_back (t_node *lst, int val)
+t_node	*push_back(t_node *lst, int val)
 {
 	t_node	*new_node;
 
@@ -64,7 +64,7 @@ t_node	*push_back (t_node *lst, int val)
 	return (new_node);
 }
 
-void	pop_node (t_node *lst, t_node *nd)
+void	pop_node(t_node *lst, t_node *nd)
 {
 	t_node	*prev;
 	t_node	*next;
@@ -79,7 +79,7 @@ void	pop_node (t_node *lst, t_node *nd)
 	lst->data--;
 }
 
-void	free_list (t_node *lst)
+void	free_list(t_node *lst)
 {
 	t_node	*current;
 	t_node	*next;

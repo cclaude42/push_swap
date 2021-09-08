@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 16:28:42 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 16:04:42 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:00:39 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push (t_node *from, t_node *to)
+void	push(t_node *from, t_node *to)
 {
 	t_node	*pushed;
 	t_node	*top_f;
@@ -34,7 +34,7 @@ void	push (t_node *from, t_node *to)
 	to->data++;
 }
 
-void	swap (t_node *stack)
+void	swap(t_node *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -54,7 +54,7 @@ void	swap (t_node *stack)
 	}
 }
 
-void	rotate (t_node *stack)
+void	rotate(t_node *stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -74,7 +74,7 @@ void	rotate (t_node *stack)
 	}
 }
 
-void	rrotate (t_node *stack)
+void	rrotate(t_node *stack)
 {
 	t_node	*first;
 	t_node	*last;
@@ -94,7 +94,7 @@ void	rrotate (t_node *stack)
 	}
 }
 
-void	condense_instructions (t_node *instructions, int target)
+void	condense_instructions(t_node *instructions, int target)
 {
 	t_node	*nd;
 	int		acount;

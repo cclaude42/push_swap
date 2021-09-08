@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:01:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:56:36 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:01:28 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	abs (int n)
+int	abs(int n)
 {
 	if (n >= 0)
 		return (n);
@@ -20,7 +20,7 @@ int	abs (int n)
 		return (-n);
 }
 
-int	is_num (char *str)
+int	is_num(char *str)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	is_num (char *str)
 	return (1);
 }
 
-long	get_val (char *str)
+long	get_val(char *str)
 {
 	long	n;
 	int		i;
@@ -59,7 +59,7 @@ long	get_val (char *str)
 	return (n * s);
 }
 
-int	get_stack (t_node *stack, int ac, char **av)
+int	get_stack(t_node *stack, int ac, char **av)
 {
 	t_node	*new_node;
 	int		i;

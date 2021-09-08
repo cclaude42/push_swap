@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 12:49:56 by cclaude           #+#    #+#             */
-/*   Updated: 2021/08/04 23:07:01 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:00:28 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
+void	do_instruction(int op, t_node *astack, t_node *bstack, t_node *ins)
 {
 	(void)ins;
 	if (op == PA)
@@ -33,7 +33,7 @@ void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
 		rrotate(bstack);
 }
 
-int	solve (t_node *astack, t_node *bstack, t_node *instructions)
+int	solve(t_node *astack, t_node *bstack, t_node *instructions)
 {
 	t_node	*nd;
 
@@ -49,7 +49,7 @@ int	solve (t_node *astack, t_node *bstack, t_node *instructions)
 		return (0);
 }
 
-int	add_instruction (t_node *instructions, char ins[5])
+int	add_instruction(t_node *instructions, char ins[5])
 {
 	if (ins[0] == 'r' && ins[1] == 'r' && ins[2] == 'a' && ins[3] == '\n')
 		push_back(instructions, RRA);
@@ -78,7 +78,7 @@ int	add_instruction (t_node *instructions, char ins[5])
 	return (1);
 }
 
-int	get_instructions (t_node *instructions)
+int	get_instructions(t_node *instructions)
 {
 	char	ins[5];
 	char	buf[1];
@@ -103,7 +103,7 @@ int	get_instructions (t_node *instructions)
 	return (ret);
 }
 
-int	main (int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_node	*astack;
 	t_node	*bstack;
@@ -119,14 +119,14 @@ int	main (int ac, char **av)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
-		free_list(astack);
-		free_list(bstack);
-		free_list(instructions);
 	}
 	else if (ac != 1)
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
+	free_list(astack);
+	free_list(bstack);
+	free_list(instructions);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 21:03:15 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:00:17 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	test_target (t_node *astack, t_node *bstack, int atarget, int btarget)
+int	test_target(t_node *astack, t_node *bstack, int atarget, int btarget)
 {
 	int	adist;
 	int	bdist;
@@ -31,7 +31,7 @@ int	test_target (t_node *astack, t_node *bstack, int atarget, int btarget)
 	return (adist + bdist);
 }
 
-int	find_best_target (t_node *astack, t_node *bstack)
+int	find_best_target(t_node *astack, t_node *bstack)
 {
 	int	best_target;
 	int	best_nmoves;
@@ -59,7 +59,7 @@ int	find_best_target (t_node *astack, t_node *bstack)
 	return (best_target);
 }
 
-void	refill_astack (t_node *astack, t_node *bstack, t_node *instructions)
+void	refill_astack(t_node *astack, t_node *bstack, t_node *instructions)
 {
 	int	target;
 	int	n;
@@ -79,7 +79,7 @@ void	refill_astack (t_node *astack, t_node *bstack, t_node *instructions)
 	}
 }
 
-void	fill_bstack (t_node *astack, t_node *bstack, t_node *instructions)
+void	fill_bstack(t_node *astack, t_node *bstack, t_node *instructions)
 {
 	t_node	*nd;
 	int		median;
@@ -101,7 +101,7 @@ void	fill_bstack (t_node *astack, t_node *bstack, t_node *instructions)
 	}
 }
 
-t_node	*insert_algorithm (t_node *astack)
+t_node	*insert_algorithm(t_node *astack)
 {
 	t_node	*instructions;
 	t_node	*bstack;

@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:05:45 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 16:05:13 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:00:05 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,41 @@ typedef struct s_node
 	struct s_node		*next;
 }		t_node;
 
-int		get_stack (t_node *stack, int ac, char **av);
+int		get_stack(t_node *stack, int ac, char **av);
 
-t_node	*insert_algorithm (t_node *astack);
+t_node	*insert_algorithm(t_node *astack);
 
-void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins);
+void	do_instruction(int op, t_node *astack, t_node *bstack, t_node *ins);
 
-void	push (t_node *from, t_node *to);
-void	swap (t_node *stack);
-void	rotate (t_node *stack);
-void	rrotate (t_node *stack);
-void	condense_instructions (t_node *instructions, int rotation);
+void	push(t_node *from, t_node *to);
+void	swap(t_node *stack);
+void	rotate(t_node *stack);
+void	rrotate(t_node *stack);
+void	condense_instructions(t_node *instructions, int rotation);
 
-t_node	*init_list (void);
-t_node	*dup_list (t_node *lst);
-t_node	*push_back (t_node *lst, int val);
-void	pop_node (t_node *lst, t_node *nd);
-void	free_list (t_node *lst);
+t_node	*init_list(void);
+t_node	*dup_list(t_node *lst);
+t_node	*push_back(t_node *lst, int val);
+void	pop_node(t_node *lst, t_node *nd);
+void	free_list(t_node *lst);
 
-int		is_empty (t_node *lst);
-int		is_sorted (t_node *lst);
-int		is_rsorted (t_node *lst);
-int		is_in (t_node *lst, int val);
-int		list_len (t_node *lst);
+int		is_empty(t_node *lst);
+int		is_sorted(t_node *lst);
+int		is_rsorted(t_node *lst);
+int		is_in(t_node *lst, int val);
+int		list_len(t_node *lst);
 
-int		list_index_of (t_node *lst, int val);
-int		list_value_at (t_node *lst, int index);
-int		list_value_around (t_node *lst, int mode, int value);
-int		list_max (t_node *lst);
-int		list_min (t_node *lst);
+int		list_index_of(t_node *lst, int val);
+int		list_value_at(t_node *lst, int index);
+int		list_value_around(t_node *lst, int mode, int value);
+int		list_max(t_node *lst);
+int		list_min(t_node *lst);
 
-t_node	*sorted_list (t_node *lst);
-int		list_count (t_node *lst, int value);
-int		list_count_from (t_node *lst, t_node *start, int value);
-int		list_dist_to (t_node *lst, int val, int *rot);
+t_node	*sorted_list(t_node *lst);
+int		list_count(t_node *lst, int value);
+int		list_count_from(t_node *lst, t_node *start, int value);
+int		list_dist_to(t_node *lst, int val, int *rot);
 
-int		abs (int n);
+int		abs(int n);
 
 #endif

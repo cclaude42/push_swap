@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 17:16:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/07/19 14:55:03 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:01:18 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*sorted_list (t_node *lst)
+t_node	*sorted_list(t_node *lst)
 {
 	t_node	*sorted;
 	int		val;
@@ -28,7 +28,7 @@ t_node	*sorted_list (t_node *lst)
 	return (sorted);
 }
 
-int	list_count (t_node *lst, int value)
+int	list_count(t_node *lst, int value)
 {
 	t_node	*nd;
 	int		count;
@@ -44,7 +44,7 @@ int	list_count (t_node *lst, int value)
 	return (count);
 }
 
-int	list_count_from (t_node *lst, t_node *start, int value)
+int	list_count_from(t_node *lst, t_node *start, int value)
 {
 	t_node	*nd;
 	int		count;
@@ -60,7 +60,7 @@ int	list_count_from (t_node *lst, t_node *start, int value)
 	return (count);
 }
 
-int	list_dist_to (t_node *lst, int val, int *rot)
+int	list_dist_to(t_node *lst, int val, int *rot)
 {
 	int	n;
 

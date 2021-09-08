@@ -6,13 +6,13 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:02:34 by cclaude           #+#    #+#             */
-/*   Updated: 2021/08/04 23:00:37 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/08 20:01:35 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_instructions (t_node *instructions, char *moves, char *targets)
+void	print_instructions(t_node *instructions, char *moves, char *targets)
 {
 	t_node	*nd;
 	char	res[5];
@@ -32,7 +32,7 @@ void	print_instructions (t_node *instructions, char *moves, char *targets)
 	}
 }
 
-void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
+void	do_instruction(int op, t_node *astack, t_node *bstack, t_node *ins)
 {
 	if (op == PA || op == PB)
 	{
@@ -58,27 +58,27 @@ void	do_instruction (int op, t_node *astack, t_node *bstack, t_node *ins)
 		rrotate(bstack);
 }
 
-int	main (int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_node	*stack;
 	t_node	*sol;
 
 	stack = init_list();
-	if (ac == 1)
-		return (0);
-	else if (stack && get_stack(stack, ac - 1, av + 1))
+	if (stack && get_stack(stack, ac - 1, av + 1))
 	{
-		if (is_sorted(stack))
-			return (0);
-		sol = insert_algorithm(stack);
-		print_instructions(sol, "sprr", "absr");
-		free_list(sol);
-		free_list(stack);
+		if (!is_sorted(stack))
+		{
+			sol = insert_algorithm(stack);
+			print_instructions(sol, "sprr", "absr");
+			free_list(sol);
+		}
 	}
-	else
+	else if (ac != 1)
 	{
 		write(2, "Error\n", 6);
+		free_list(stack);
 		return (1);
 	}
+	free_list(stack);
 	return (0);
 }
