@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 12:49:56 by cclaude           #+#    #+#             */
-/*   Updated: 2021/09/08 20:00:28 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/09 19:48:04 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,12 @@ int	get_instructions(t_node *instructions)
 
 int	main(int ac, char **av)
 {
+	int		ret;
 	t_node	*astack;
 	t_node	*bstack;
 	t_node	*instructions;
 
+	ret = 0;
 	astack = init_list();
 	bstack = init_list();
 	instructions = init_list();
@@ -121,12 +123,11 @@ int	main(int ac, char **av)
 			write(1, "KO\n", 3);
 	}
 	else if (ac != 1)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		ret = 1;
 	free_list(astack);
 	free_list(bstack);
 	free_list(instructions);
-	return (0);
+	if (ret)
+		write(2, "Error\n", 6);
+	return (ret);
 }

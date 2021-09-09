@@ -6,7 +6,7 @@
 /*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 13:01:58 by cclaude           #+#    #+#             */
-/*   Updated: 2021/09/08 20:01:28 by cclaude          ###   ########.fr       */
+/*   Updated: 2021/09/09 19:43:47 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ int	get_stack(t_node *stack, int ac, char **av)
 		new_node = push_back(stack, get_val(av[i]));
 		if (!new_node || !is_num(av[i]) || get_val(av[i]) == 2147483648
 			|| list_count(stack, get_val(av[i])) > 1)
-		{
-			free_list(stack);
 			return (0);
-		}
 		i++;
 	}
 	return (1);
